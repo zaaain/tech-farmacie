@@ -35,11 +35,23 @@ export const packagingType = [
   { id: 4, label: "Boxes / Crates", value: "boxesCrates" },
 ]
 
+// export const weightUnitType = [
+//   { id: 1, label: "Kg", value: "kg" },
+//   { id: 2, label: "Liter", value: "liter" },
+//   { id: 3, label: "Dozen", value: "dozen" },
+//   { id: 4, label: "Sankara", value: "sankara" },
+// ]
+
 export const weightUnitType = [
-  { id: 1, label: "Kg", value: "kg" },
-  { id: 2, label: "Liter", value: "liter" },
-  { id: 3, label: "Dozen", value: "dozen" },
-  { id: 4, label: "Sankara", value: "sankara" },
+  { id: 1, label: "Gram", value: "gram" },
+  { id: 2, label: "Milligram ", value: "milligram " },
+  { id: 3, label: "Kg", value: "kg" },
+  { id: 4, label: "Liter", value: "liter" },
+  { id: 5, label: "Milliliter ", value: "milliliter " },
+  { id: 6, label: "Dozen", value: "dozen" },
+  { id: 7, label: "Sankara", value: "sankara" },
+  { id: 8, label: "Percentage  ", value: "percentage" },
+  { id: 8, label: "Mun", value: "mun" },
 ]
 
 export const seedTypeOption = [

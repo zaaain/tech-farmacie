@@ -19,16 +19,16 @@ import { getProductDetails } from '../redux/slices/products/productsActions'
 
 function getCategoryComponent(val,  onSubmit, addProLoader, images, handleImagesChange) {
     if (val === "Fruits" || val === "Vegetables" || val === "Fiber & Oil Seed Crops" || val === "Grains & Cereals") {
-        return <FruVegFiberGrains onSubmit={onSubmit} loader={addProLoader} images={images} onImages={handleImagesChange}/>;
+        return <FruVegFiberGrains selectedCate={val} onSubmit={onSubmit} loader={addProLoader} images={images} onImages={handleImagesChange}/>;
     }
     if (val === "Fertilizers" || val === "Plant Pathology & Entomology") {
-        return <FertilizerPlant onSubmit={onSubmit} loader={addProLoader}  images={images} onImages={handleImagesChange}/>;
+        return <FertilizerPlant selectedCate={val} onSubmit={onSubmit} loader={addProLoader}  images={images} onImages={handleImagesChange}/>;
     }
     if (val === "Seed Varieties") {
-        return <Seed onSubmit={onSubmit} loader={addProLoader}  images={images} onImages={handleImagesChange}/>;
+        return <Seed selectedCate={val} onSubmit={onSubmit} loader={addProLoader}  images={images} onImages={handleImagesChange}/>;
     }
     if (val === "Machinary & Tools") {
-        return <Machinary onSubmit={onSubmit} loader={addProLoader}  images={images} onImages={handleImagesChange}/>;
+        return <Machinary selectedCate={val} onSubmit={onSubmit} loader={addProLoader}  images={images} onImages={handleImagesChange}/>;
     }
 
 }

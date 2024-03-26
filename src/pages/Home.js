@@ -31,7 +31,7 @@ const HomeDashboard = () => {
       <div className="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-5">
         <div className="bg-primary p-5 rounded-xl">
           <p className="text-[22px] text-white font-bold font-RobotoBold">
-              Verifued Products
+          Verified Products
           </p>
           <div className="flex justify-center mt-5">
             <div className="w-[150px] h-[150px] rounded-full items-center justify-center flex bg-white">
@@ -45,7 +45,7 @@ const HomeDashboard = () => {
         </div>
         <div className="col-span-1 bg-red-400 p-5 rounded-xl">
           <p className="text-[22px] font-bold font-RobotoBold text-white">
-          UnVerifued Products
+          UnVerified Products
           </p>
           <div className="flex justify-center mt-5">
             <div className="w-[150px] h-[150px] rounded-full items-center justify-center flex bg-white">
