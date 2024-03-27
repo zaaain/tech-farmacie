@@ -59,7 +59,7 @@ const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
   };
 
   useEffect(()=>{
-    const flag = chemicals.some((item)=> item.name && item.unit && item.volume)
+    const flag = chemicals.some((item)=> item.name)
     if(flag){
       setChemFlag(true)
     }else{
@@ -69,7 +69,7 @@ const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
 
   const onSubmitNow = async (val) => {
     if (flag) {
-      eSnack("Please add at least one active ingredients");
+      eSnack("First, add the active ingredient.");
       return;
     }
     Object.assign(val, { composition: JSON.stringify(chemicals) });
@@ -124,22 +124,23 @@ const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
               />
     
         </div>
-        <div className="col-span-2">
-        <SelectInput
-                placeholder="Weight Unit"
-                value={chem.unit}
-                options={weightUnitType}
-                onChange={(e) => handleInputChange(index, "unit", e.target.value)}
-              />
-        </div>
         <div className="col-span-1">
         <FormInput
-                placeholder="Volume"
+                placeholder="Concentration"
                 type="number"
                 value={chem.volume}
                 onChange={(e) => handleInputChange(index, "volume", e.target.value)}
               />
         </div>
+        <div className="col-span-2">
+        <SelectInput
+                placeholder="Unit"
+                value={chem.unit}
+                options={weightUnitType}
+                onChange={(e) => handleInputChange(index, "unit", e.target.value)}
+              />
+        </div>
+      
         <div className="col-span-1 flex">
               <div className={`${!chemFlag ? "bg-[#eaeaea]" : "bg-primary"} p-2 flex items-center justify-center w-[50px] rounded-2xl h-[50px] cursor-pointer`} onClick={handleAddNewChem}>
                 <AddIcon style={{color:"white"}}/>

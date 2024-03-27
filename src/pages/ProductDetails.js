@@ -260,15 +260,15 @@ const handleUpdate = (val) => {
                 <>
                 <p className='text-primary text-[16px] font-semibold text-RobotoBold'>Composition</p>
                 <hr className='my-2'/>
-                <div className='grid grid-cols-2 gap-5'>
+                {/* <div className='grid grid-cols-2 gap-5'> */}
                 {data.composition.map((item,index) =>(
-                    <div key={index} className='shadow-card p-2 col-span-1 rounded-xl'>
-                    <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`Name:`} </span>{item.name && item.name}</p>
-                    <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`Unit:`} </span>{item.name && item.unit}</p>
-                    <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`Volume:`} </span>{item.name && item.volume}</p>
-                    </div>
+                    // <div key={index} className='shadow-card p-2 col-span-2 rounded-xl'>
+                    <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`${index +1}:`} </span>{`${item.name && item.name}${item.volume && `;${item.volume}`}${item.unit && item.unit}`}</p>
+                    /* <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`Unit:`} </span>{item.name && item.unit}</p>
+                    <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`Volume:`} </span>{item.name && item.volume}</p> */
+                    // </div>
                 ))}
-                </div>
+                {/* </div> */}
                 <hr className='my-2'/>
                 </>
             )}

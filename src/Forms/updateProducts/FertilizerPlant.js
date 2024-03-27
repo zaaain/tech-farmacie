@@ -34,7 +34,7 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
 
   const checkEmptyFields = (chemicalsArray) => {
     const isEmpty = chemicalsArray.some(
-      (chem) => chem.name.trim() === "" || chem.unit.trim() === "" || chem.volume.trim() === ""
+      (chem) => chem.name.trim() === ""
     );
     setFlag(isEmpty);
   };
@@ -60,7 +60,7 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
   };
 
   useEffect(()=>{
-    const flag = chemicals.some((item)=> item.name && item.unit && item.volume)
+    const flag = chemicals.some((item)=> item.name)
     if(flag){
       setChemFlag(true)
     }else{
@@ -70,7 +70,7 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
 
   useEffect(()=>{
     if(defaultValues && defaultValues.composition && defaultValues.composition.length > 0){
-      const chem = defaultValues.composition.map((item)=> ({name:item.name, unit:item.unit , volume:item.volume}))
+      const chem = defaultValues.composition.map((item)=> ({name:item.name, unit:item.unit ? item.unit : "" , volume:item.volume ? item.volume : ""}))
       setChemicals(chem)
       checkEmptyFields([...chem]);
     }
@@ -79,7 +79,7 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
 
   const onSubmitNow = async (val) => {
     if (flag) {
-      eSnack("Please add at least one active ingredients");
+      eSnack("First, add the active ingredient.");
       return;
     }
     Object.assign(val, { composition: chemicals});
@@ -135,21 +135,22 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
     
         </div>
         <div className="col-span-1">
-        <SelectInput
-                placeholder="Weight Unit"
-                value={chem.unit}
-                options={weightUnitType}
-                onChange={(e) => handleInputChange(index, "unit", e.target.value)}
-              />
-        </div>
-        <div className="col-span-1">
         <FormInput
-                placeholder="Volume"
+                placeholder="Concentration"
                 type="number"
                 value={chem.volume}
                 onChange={(e) => handleInputChange(index, "volume", e.target.value)}
               />
         </div>
+        <div className="col-span-1">
+        <SelectInput
+                placeholder="Unit"
+                value={chem.unit}
+                options={weightUnitType}
+                onChange={(e) => handleInputChange(index, "unit", e.target.value)}
+              />
+        </div>
+   
         <div className="col-span-1 flex">
               <div className={`${!chemFlag ? "bg-[#eaeaea]" : "bg-primary"} p-2 flex items-center justify-center w-[50px] rounded-2xl h-[50px] cursor-pointer`} onClick={handleAddNewChem}>
                 <AddIcon style={{color:"white"}}/>
