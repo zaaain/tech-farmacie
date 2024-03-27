@@ -29,10 +29,12 @@ export const category = [
 
 
 export const packagingType = [
-  { id: 1, label: "Plastic Bags", value: "plasticBag" },
-  { id: 2, label: "Cloth Bags", value: "clothBag" },
-  { id: 3, label: "Burlap Bags", value: "burlapBags" },
-  { id: 4, label: "Boxes / Crates", value: "boxesCrates" },
+  { id: 1, label: "Blastic Bottle", value: "blasticBottle" },
+  { id: 2, label: "Plastic Bags", value: "plasticBag" },
+  { id: 3, label: "Aluminium Bottle", value: "aluminiumBottle" },
+  { id: 4, label: "Cloth Bags", value: "clothBag" },
+  { id: 5, label: "Burlap Bags", value: "burlapBags" },
+  { id: 6, label: "Boxes / Crates", value: "boxesCrates" },
 ]
 
 // export const weightUnitType = [

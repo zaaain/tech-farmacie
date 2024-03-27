@@ -17,7 +17,7 @@ import useSnackMsg from "hooks/useSnackMsg";
 
 const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
 
-  const [chemicals, setChemicals] = useState([{ name: ""}]);
+  const [chemicals, setChemicals] = useState([{ name: "", unit:"",volume:""}]);
   const [flag, setFlag] = useState(true);
   const [chemFlag, setChemFlag] = useState(false);
   const {eSnack} = useSnackMsg()
@@ -47,7 +47,7 @@ const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
 
   const handleAddNewChem = () => {
     if(!chemFlag) return
-    setChemicals([...chemicals, { name: ""}]);
+    setChemicals([...chemicals, { name: "", unit:"", volume:"" }]);
     setFlag(true);
   };
 
@@ -59,7 +59,7 @@ const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
   };
 
   useEffect(()=>{
-    const flag = chemicals.some((item)=> item.name)
+    const flag = chemicals.some((item)=> item.name && item.unit && item.volume)
     if(flag){
       setChemFlag(true)
     }else{
@@ -114,7 +114,7 @@ const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
         <>
         {chemicals.map((chem, index) => (
         <>
-        <div className={"col-span-6"}>
+        <div className={"col-span-2"}>
  
               <FormInput
                 placeholder="Active Ingredients"
@@ -124,11 +124,27 @@ const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
               />
     
         </div>
-        <div className="col-span-6 flex">
+        <div className="col-span-2">
+        <SelectInput
+                placeholder="Weight Unit"
+                value={chem.unit}
+                options={weightUnitType}
+                onChange={(e) => handleInputChange(index, "unit", e.target.value)}
+              />
+        </div>
+        <div className="col-span-1">
+        <FormInput
+                placeholder="Volume"
+                type="number"
+                value={chem.volume}
+                onChange={(e) => handleInputChange(index, "volume", e.target.value)}
+              />
+        </div>
+        <div className="col-span-1 flex">
               <div className={`${!chemFlag ? "bg-[#eaeaea]" : "bg-primary"} p-2 flex items-center justify-center w-[50px] rounded-2xl h-[50px] cursor-pointer`} onClick={handleAddNewChem}>
                 <AddIcon style={{color:"white"}}/>
               </div>
-              <div className={`${!chemFlag || chemicals.length === 1 ? "bg-[#eaeaea]" : "bg-primary"} ml-5 p-2 flex items-center justify-center w-[50px] rounded-2xl h-[50px] cursor-pointer`} onClick={()=>handleRemoveChem(index)}>
+              <div className={`${!chemFlag || chemicals.length === 1 ? "bg-[#eaeaea]" : "bg-secondary"} ml-5 p-2 flex items-center justify-center w-[50px] rounded-2xl h-[50px] cursor-pointer`} onClick={()=>handleRemoveChem(index)}>
                 <CloseIcon style={{color:"white"}}/>
               </div>
         </div>
