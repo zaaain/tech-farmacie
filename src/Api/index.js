@@ -6,7 +6,7 @@ export default class Client {
 
   constructor() {
     this.token = AsynStorage.getItem("jwt");
-    this.url = "https://agronomics.vercel.app";
+    this.url = "https://agronomics.pk/v1/";
     this.client = axios.create({
       baseURL: this.url,
       headers: {
