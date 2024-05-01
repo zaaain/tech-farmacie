@@ -196,6 +196,11 @@ const handleUpdate = (val) => {
                     Product Type: <span className='text-black font-normal font-Roboto'>{data.ProductType}</span>
                 </p>
             )}
+            {data.subProductType && (
+                <p className='text-primary text-[16px] font-semibold text-RobotoBold truncate'>
+                    Sub Product Type: <span className='text-black font-normal font-Roboto'>{data.subProductType}</span>
+                </p>
+            )}
             {data.name && (
                 <p className='text-primary text-[16px] font-semibold text-RobotoBold truncate'>
                     Product Name: <span className='text-black font-normal font-Roboto'>{data.name}</span>
@@ -256,19 +261,33 @@ const handleUpdate = (val) => {
                     Seed Weight: <span className='text-black font-normal capitalize font-Roboto'>{data.seedWeight}</span>
                 </p>
             )}
+               {data.expiryDate && (
+                <p className='text-primary text-[16px] font-semibold text-RobotoBold truncate'>
+                   Expiry Date: <span className='text-black font-normal capitalize font-Roboto'>{data.expiryDate}</span>
+                </p>
+            )}
+                   {data.areaCovered && (
+                <p className='text-primary text-[16px] font-semibold text-RobotoBold truncate'>
+                    Area Covered: <span className='text-black font-normal capitalize font-Roboto'>{data.areaCovered}</span>
+                </p>
+            )}
+             {data.disease && data.disease.length > 0 && (
+                <>
+                <p className='text-primary text-[16px] font-semibold text-RobotoBold'>Disease</p>
+                <hr className='my-2'/>
+                {data.disease.map((item,index) =>(
+                    <p className="text-primary font-bold text-[14px]">{index + 1}: <span className="text-black font-normal">{item}</span></p>
+                ))}
+                <hr className='my-2'/>
+                </>
+            )}
             {data.composition && data.composition.length > 0 && (
                 <>
                 <p className='text-primary text-[16px] font-semibold text-RobotoBold'>Composition</p>
                 <hr className='my-2'/>
-                {/* <div className='grid grid-cols-2 gap-5'> */}
                 {data.composition.map((item,index) =>(
-                    // <div key={index} className='shadow-card p-2 col-span-2 rounded-xl'>
-                    <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`${index +1}:`} </span>{`${item.name && item.name}${item.volume && `;${item.volume}`}${item.unit && item.unit}`}</p>
-                    /* <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`Unit:`} </span>{item.name && item.unit}</p>
-                    <p className='text-black text-[16px] font-normal capitalize font-Roboto'><span className='text-primary  font-semibold text-RobotoBold '>{`Volume:`} </span>{item.name && item.volume}</p> */
-                    // </div>
+                    <p className="text-primary font-bold text-[14px]">{index + 1}: <span className="text-black font-normal">{`${item.name && item.name}${item.volume && `; ${item.volume}`}${item.unit && item.unit === "percentage" ? "%" : item.unit}`}</span></p>
                 ))}
-                {/* </div> */}
                 <hr className='my-2'/>
                 </>
             )}

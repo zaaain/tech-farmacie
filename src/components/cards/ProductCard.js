@@ -28,10 +28,10 @@ const ProductCard = ({onDetails, data, loader}) => {
       />
       </div>
       <div className='flex justify-center items-center flex-col py-2'>
-      <p className=' font-semibold font-RobotoBold text-[14px] truncate'>
+      <p className=' font-semibold font-RobotoBold text-[14px] w-[95%] text-center truncate'>
             {data.ProductType && data.ProductType}
         </p>
-        <p className=' font-semibold font-RobotoBold text-[14px] truncate'>
+        <p className=' font-semibold font-RobotoBold text-[14px] w-[95%] text-center truncate'>
             {data.name && data.name}
         </p>
       </div>
