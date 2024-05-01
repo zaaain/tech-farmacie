@@ -27,6 +27,9 @@ export const FertilizerPlantSchema = yup.object().shape({
   pkgType: yup.string().required("Please select package type."),
   weightUnit: yup.string().required("Please select weight unit."), 
   description: yup.string().required("Please enter description."),
+  subProductType: yup.string().required("Please enter sub product type."),
+  areaCovered : yup.string().required("Please enter area covered ."),
+  // expiryDate : yup.string().required("Please select expiry date."),
 });
 
 export const SeedSchema = yup.object().shape({

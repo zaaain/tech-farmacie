@@ -21,6 +21,7 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
   const [flag, setFlag] = useState(true);
   const [chemFlag, setChemFlag] = useState(false);
   const {eSnack} = useSnackMsg()
+  const [diseases, setDiseases] = useState([''])
   const {
     control,
     register,
@@ -76,14 +77,45 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
     }
   },[])
 
+  useEffect(()=>{
+    if(defaultValues.disease && defaultValues.disease.length > 0){
+      setDiseases(defaultValues.disease)
+    }
+  },[])
 
   const onSubmitNow = async (val) => {
     if (flag) {
       eSnack("First, add the active ingredient.");
       return;
     }
+    const disFlag = diseases.some((item) => item === "")
+    if(disFlag){
+      eSnack("First, Please add the disease name.");
+      return;
+    }
     Object.assign(val, { composition: chemicals});
+    Object.assign(val, { disease: JSON.stringify(diseases)});
     onSubmit(val);
+  };
+
+
+  const handleAddDisease = () => {
+    const flag = diseases.some((item) => item === "")
+    if(flag) return
+    setDiseases([...diseases, '']);
+  };
+
+  const handleRemoveDisease = (index) => {
+    if(diseases && diseases.length === 1) return
+    const updatedDiseases = [...diseases];
+    updatedDiseases.splice(index, 1); // Remove the disease at the specified index
+    setDiseases(updatedDiseases);
+  };
+
+  const handleDiseaseChange = (value, index) => {
+    const updatedDiseases = [...diseases];
+    updatedDiseases[index] = value;
+    setDiseases(updatedDiseases);
   };
 
   return (
@@ -117,6 +149,37 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
                 value={field.value}
                 onChange={(e) => field.onChange(e.target.value)}
                 error={errors?.brand && errors.brand.message}
+              />
+            )}
+          />
+        </div>
+        <div className="col-span-2">
+          <Controller
+            name="subProductType"
+            control={control}
+            render={({ field }) => (
+              <FormInput
+                {...register("subProductType")}
+                placeholder="Enter Sub Product Type"
+                value={field.value}
+                onChange={(e) => field.onChange(e.target.value)}
+                error={errors?.subProductType && errors.subProductType.message}
+              />
+            )}
+          />
+        </div>
+        <div className="col-span-2">
+          <Controller
+            name="areaCovered"
+            control={control}
+            render={({ field }) => (
+              <FormInput
+                {...register("areaCovered")}
+                placeholder="Enter Area Covered"
+                value={field.value}
+                type="number"
+                onChange={(e) => field.onChange(e.target.value)}
+                error={errors?.areaCovered && errors.areaCovered.message}
               />
             )}
           />
@@ -194,6 +257,25 @@ const FertilizerPlant = ({loader, onSubmit,defaultValues }) => {
             )}
           />
         </div> 
+        {diseases && diseases.length > 0 && diseases.map((disease,index)=>(
+          <>
+        <div className="col-span-3">
+            <FormInput
+                placeholder="Enter Disease Name"
+                value={disease}
+                onChange={(e) => handleDiseaseChange(e.target.value, index)}
+            />
+        </div>
+        <div className=" flex items-center  col-span-1">
+              <div onClick={handleAddDisease} className={` ${!disease ? "bg-[#eaeaea]" : "bg-primary"} p-2 flex items-center justify-center w-[50px] rounded-2xl h-[50px] cursor-pointer`}>
+                <AddIcon style={{color:"white"}}/>
+              </div >
+              <div  onClick={() => handleRemoveDisease(index)}  className={` ${!disease || diseases.length === 1 ? "bg-[#eaeaea]" : "bg-secondary"} ml-5 p-2 flex items-center justify-center w-[50px] rounded-2xl h-[50px] cursor-pointer`}>
+                <CloseIcon style={{color:"white"}}/>
+              </div>
+        </div>
+        </>
+        ))}
         <div className="col-span-4">
           <Controller
             name="pkgType"

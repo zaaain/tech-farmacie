@@ -27,7 +27,7 @@ function getCategoryComponent(val, handleUpdate, data, updateProductLoader) {
     if (val === "Fruits" || val === "Vegetables" || val === "Fiber & Oil Seed Crops" || val === "Grains & Cereals") {
         return <FruVegFiberGrains onSubmit={handleUpdate} defaultValues={data} loader={updateProductLoader}/>;
     }
-    if (val === "Fertilizers" || val === "Plant Pathology & Entomology") {
+    if (val === "Fertilizers" || val === "Plant Pathology & Entomology" || val === "Pesticides" ) {
         return <FertilizerPlant onSubmit={handleUpdate} defaultValues={data} loader={updateProductLoader}/>;
     }
     if (val === "Seed Varieties") {
