@@ -163,7 +163,7 @@ const FertilizerPlant = ({onSubmit, loader, images, onImages }) => {
                 {...register("areaCovered")}
                 placeholder="Enter Area Covered"
                 value={field.value}
-                type="number"
+                // type="number"
                 onChange={(e) => field.onChange(e.target.value)}
                 error={errors?.areaCovered && errors.areaCovered.message}
               />
