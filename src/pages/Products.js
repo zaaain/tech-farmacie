@@ -110,7 +110,11 @@ const Products = () => {
 
         const payload = {
             status: val.status ? val.status : undefined,
-            productType: val.productType ? val.productType : undefined
+            productType: val.productType ? val.productType : undefined,
+            query: val.query ? val.query : undefined,
+            category: val.category ? val.category : undefined,
+            subCategory: val.category && val.subCategory ? val.subCategory : undefined,
+            composition: val.composition && val.composition.length > 0 ? val.composition : undefined
         }
         setData([])
         setFilterLoader(true)
