@@ -21,7 +21,7 @@ function getCategoryComponent(val,  onSubmit, addProLoader, images, handleImages
     if (val === "Fruits" || val === "Vegetables" || val === "Fiber & Oil Seed Crops" || val === "Grains & Cereals") {
         return <FruVegFiberGrains selectedCate={val} onSubmit={onSubmit} loader={addProLoader} images={images} onImages={handleImagesChange}/>;
     }
-    if (val === "Fertilizers" || val === "Plant Pathology & Entomology") {
+    if (val === "Fertilizers" || val === "Plant Pathology & Entomology" || val === "Pesticides") {
         return <FertilizerPlant selectedCate={val} onSubmit={onSubmit} loader={addProLoader}  images={images} onImages={handleImagesChange}/>;
     }
     if (val === "Seed Varieties") {
@@ -53,31 +53,37 @@ const categoryData = [
       img: imgUrl + "/category/fertilizer.png",
     },
     {
-      id: 4,
+        id: 4,
+        name: "Pesticides",
+        val: "pesticides",
+        img: imgUrl + "/category/Pesticide.png",
+      },
+    {
+      id: 5,
       name: "Fiber & Oil Seed Crops",
       val: "FiberOilSeedCrops",
       img: imgUrl + "/category/Oilandfibrecrops.png",
     },
     {
-      id: 5,
+      id: 6,
       name: "Grains & Cereals",
       val: "grainsCereals",
       img: imgUrl + "/category/GrainandCerealCrop.png",
     },
     {
-      id: 6,
+      id: 7,
       name: "Plant Pathology & Entomology",
       val: "plantPathologyEntomology",
       img: imgUrl + "/category/Entomolgy.png",
     },
     {
-      id: 7,
+      id: 8,
       name: "Seed Varieties",
       val: "seedVarieties",
       img: imgUrl + "/category/SeedVarieties.png",
     },
     {
-      id: 8,
+      id: 9,
       name: "Machinary & Tools",
       val: "machinaryTools",
       img: imgUrl + "/category/Machineryandtools.png",
@@ -104,7 +110,11 @@ const Products = () => {
 
         const payload = {
             status: val.status ? val.status : undefined,
-            productType: val.productType ? val.productType : undefined
+            productType: val.productType ? val.productType : undefined,
+            query: val.query ? val.query : undefined,
+            category: val.category ? val.category : undefined,
+            subCategory: val.category && val.subCategory ? val.subCategory : undefined,
+            composition: val.composition && val.composition.length > 0 ? val.composition : undefined
         }
         setData([])
         setFilterLoader(true)

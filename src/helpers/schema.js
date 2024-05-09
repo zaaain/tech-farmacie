@@ -17,7 +17,7 @@ export const FruVegFiberGrainsSchema = yup.object().shape({
   pkgType: yup.string().typeError("Please select package type.").required("Please select package type."),
   weightUnit: yup.string().required("Please select weight unit."),
   pkgWeight: yup.string().required("Please enter package weight."),
-  description: yup.string().required("Please enter description."),
+  description: yup.string().required("Please enter description.").max(500, "Description must be at most 500 characters long."),
 });
 
 export const FertilizerPlantSchema = yup.object().shape({
@@ -26,7 +26,10 @@ export const FertilizerPlantSchema = yup.object().shape({
   pkgWeight: yup.string().required("Please enter weight weight."),
   pkgType: yup.string().required("Please select package type."),
   weightUnit: yup.string().required("Please select weight unit."), 
-  description: yup.string().required("Please enter description."),
+  description: yup.string().required("Please enter description.").max(500, "Description must be at most 500 characters long."),
+  subProductType: yup.string().required("Please enter sub product type."),
+  areaCovered : yup.string().required("Please enter area covered ."),
+  // expiryDate : yup.string().required("Please select expiry date."),
 });
 
 export const SeedSchema = yup.object().shape({
@@ -35,7 +38,7 @@ export const SeedSchema = yup.object().shape({
   pkgType: yup.string().required("Please select package type."),
   weightUnit: yup.string().required("Please select weight unit."),
   pkgWeight: yup.string().required("Please enter weight weight."),
-  description: yup.string().required("Please enter description."),
+  description: yup.string().required("Please enter description.").max(500, "Description must be at most 500 characters long."),
   seedVariety: yup.string().required("Please enter seed variety."),
   seedType: yup.string().required("Please select seed type."),
   suitableRegion: yup.string().required("Please select region."),
@@ -44,7 +47,7 @@ export const SeedSchema = yup.object().shape({
 
 export const MachinaryFormSchema = (type) => {
   let schema = yup.object().shape({
-    description: yup.string().required("Please enter description."),
+    description: yup.string().required("Please enter description.").max(500, "Description must be at most 500 characters long."),
     type: yup.string().required("Please enter product type."),
     name: yup.string().required("Please enter name.")
   });
